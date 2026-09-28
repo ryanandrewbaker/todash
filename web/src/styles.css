@@ -1,0 +1,233 @@
+:root {
+  --ink: #0b100e;
+  --ink-2: #141c18;
+  --paper: #eadfc8;
+  --paper-dim: #cbbf9e;
+  --brass: #d4a24c;
+  --brass-2: #8c6a2a;
+  --signal: #7dffb3;
+  --warn: #ffb020;
+  --void: #6b7c74;
+  --line: rgba(234, 223, 200, 0.12);
+  --stamp: #ff6b4a;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  min-height: 100%;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+body {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(212, 162, 76, 0.08), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.015), transparent 30%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      rgba(234, 223, 200, 0.035) 32px
+    );
+}
+
+h1, h2, h3, .display {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 0;
+}
+
+button {
+  background: var(--brass);
+  color: var(--ink);
+  border-color: var(--brass);
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--paper);
+  border-color: var(--line);
+}
+
+input, select, textarea {
+  padding: 0.55rem 0.7rem;
+  background: rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+nav {
+  border-right: 1px solid var(--line);
+  padding: 2rem 1.25rem;
+  background: rgba(11, 16, 14, 0.86);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.mark {
+  font-family: "Instrument Serif", serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.mark span {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-top: 0.4rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 2.5rem 0 0;
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+nav a {
+  display: block;
+  padding: 0.4rem 0;
+  color: var(--paper-dim);
+  border-bottom: 1px solid transparent;
+}
+
+nav a.active, nav a:hover {
+  color: var(--paper);
+  border-bottom-color: var(--brass);
+}
+
+main {
+  padding: 2.25rem 2.5rem 4rem;
+}
+
+.kicker {
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 10px;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.metric {
+  border: 1px solid var(--line);
+  padding: 1rem 1.1rem 0.9rem;
+  background: rgba(20, 28, 24, 0.7);
+}
+
+.metric b {
+  display: block;
+  font-family: "Instrument Serif", serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-top: 0.35rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  color: var(--void);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+}
+
+.stamp {
+  display: inline-block;
+  border: 1px solid currentColor;
+  padding: 0.1rem 0.35rem;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stamp.exact { color: var(--signal); }
+.stamp.inferred { color: var(--warn); }
+.stamp.unallocated, .stamp.unmatched, .stamp.unclassified, .stamp.ambiguous {
+  color: var(--stamp);
+}
+
+.panel {
+  border: 1px solid var(--line);
+  padding: 1.1rem;
+  background: rgba(11, 16, 14, 0.55);
+}
+
+.form {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 420px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.muted { color: var(--void); }
+
+@media (max-width: 960px) {
+  .shell { grid-template-columns: 1fr; }
+  nav { height: auto; position: relative; }
+  .metrics, .split, .row { grid-template-columns: 1fr; }
+  main { padding: 1.25rem; }
+}
